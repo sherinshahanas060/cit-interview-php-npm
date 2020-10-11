@@ -1,0 +1,111 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+$white: #fff;
+$grayLight: #ccc;
+$blueLight: #ddeff9;
+$tableGray: #f9f5fd;
+$theme-color: #2d48c5;
+$theme-color-dark: #1b3aaa;
+$theme-bg: #f4f6f9;
+$red-theme:#FF2B71;
+$dark-blue:#031229;
+$grayDark:#868585;
+
+// theme color
+$primaryGray:#f4f6f9;
+
+.primary-gray {
+  color : $primaryGray;
+}
+.bg-primary-gray {
+  background-color : $primaryGray;
+}
+.dark-gray {
+  color : $grayDark;
+}
+.bg-dark-gray {
+  background-color : $grayDark;
+}
+.white {
+  color : $white;
+}
+.bg-white {
+  background-color : $white;
+}
+
+
+.blue {
+  color: $blue;
+}
+.indigo {
+  color: $indigo;
+}
+.light-blue{
+  color: $blueLight;
+}
+.purple {
+  color: $purple;
+}
+.pink {
+  color: $pink;
+}
+.red {
+  color: $red;
+}
+.orange {
+  color: $orange;
+}
+.yellow {
+  color: $yellow;
+}
+.green {
+  color: $green;
+}
+.teal {
+  color: $teal;
+}
+.cyan {
+  color: $cyan;
+}
+.grayLight{
+  color: $grayLight;
+}
+.theme-bg {
+  background: $theme-bg;
+}
+.theme-color{
+  color:$theme-color;
+}
+.bg-indigo {
+  background-color: $indigo;
+}
+.bg-teal {
+  background-color: $teal;
+}
+.bg-no {
+  background-color:rgba(0, 0, 0, 0);
+  background:none;
+}
+
+$labelheight: 35px;
+$labelInputHeight: 33px;
+$cardTitleFont: 17px;
+$btn-font: 13px;

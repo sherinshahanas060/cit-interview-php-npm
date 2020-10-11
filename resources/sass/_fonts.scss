@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'font-Black';
+    src: url('../../public/fonts/Roboto/Roboto-Black.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: 'font-black-italic';
+    src: url('../../public/fonts/Roboto/Roboto-BlackItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: 'font-bold';
+    src: url('../../public/fonts/Roboto/Roboto-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: 'font-bold-italic';
+    src: url('../../public/fonts/Roboto/Roboto-BoldItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: 'font-light';
+    src: url('../../public/fonts/Roboto/Roboto-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: 'font-light-italic';
+    src: url('../../public/fonts/Roboto/Roboto-LightItalic.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: 'font-reguler';
+    src: url('../../public/fonts/Roboto/Roboto-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  @font-face {
+    font-family: 'font-medium';
+    src: url('../../public/fonts/Roboto/Roboto-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
+  $font-black:font-black;
+  $font-black-italic:font-black-italic;
+  $font-bold:font-bold;
+  $font-bold-italic:font-bold-italic;
+  $font-light:font-light;
+  $font-light-italic:font-light-italic;
+  $font-reguler:font-reguler;
+  $font-medium:font-medium;
+  $font-small:12px;
+  .font-black{
+    font-family:$font-black;
+  }
+  .font-black-italic{
+    font-family:font-black-italic;
+  }
+  .font-bold{
+    font-family:font-bold;
+  }
+  .font-bold-italic{
+    font-family:font-bold-italic;
+  }
+  .font-light{
+    font-family:font-light;
+  }
+  .font-light-italic{
+    font-family:font-light-italic;
+  }
+  .font-reguler{
+    font-family:font-reguler;
+  }
+  .font-medium{
+    font-family:font-medium
+  }
+  .font-normal{
+    font-size:$font-small !important; 
+  }
+  .font-min{
+    font-size: 10px;
+  }
+  .font-med{
+    font-size: 14px;
+  }
+  .font-big{
+    font-size:30px;
+  }
