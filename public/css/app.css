@@ -31219,6 +31219,270 @@ a.text-muted:hover {
   color: #ffffff;
 }@charset "UTF-8";
 
+.primary-gray {
+  color: #f4f6f9;
+}
+
+.bg-primary-gray {
+  background-color: #f4f6f9;
+}
+
+.dark-gray {
+  color: #868585;
+}
+
+.bg-dark-gray {
+  background-color: #868585;
+}
+
+.white {
+  color: #fff;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.blue {
+  color: #3490dc;
+}
+
+.indigo {
+  color: #6574cd;
+}
+
+.light-blue {
+  color: #ddeff9;
+}
+
+.purple {
+  color: #9561e2;
+}
+
+.pink {
+  color: #f66d9b;
+}
+
+.red {
+  color: #e3342f;
+}
+
+.orange {
+  color: #f6993f;
+}
+
+.yellow {
+  color: #ffed4a;
+}
+
+.green {
+  color: #38c172;
+}
+
+.teal {
+  color: #4dc0b5;
+}
+
+.cyan {
+  color: #6cb2eb;
+}
+
+.grayLight {
+  color: #ccc;
+}
+
+.theme-bg {
+  background: #f4f6f9;
+}
+
+.theme-color {
+  color: #2d48c5;
+}
+
+.bg-indigo {
+  background-color: #6574cd;
+}
+
+.bg-teal {
+  background-color: #4dc0b5;
+}
+
+.bg-no {
+  background-color: rgba(0, 0, 0, 0);
+  background: none;
+}
+
+.todo-filter label {
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  width: 263px;
+  min-height: 60px;
+  position: relative;
+  margin-left: 12px;
+  margin-top: 17px;
+  margin-bottom: 0px;
+}
+
+.todo-filter label p {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 11px;
+  color: #ccc;
+  font-weight: 200;
+}
+
+.todo-filter label .multiselect__tags {
+  padding: 10px 0px 0px;
+  padding-right: 0px !important;
+  margin: 0px;
+  border-radius: 10px;
+  border: 0px;
+  background: transparent;
+}
+
+.todo-filter label .multiselect__tag {
+  background: transparent;
+  border: 0px;
+  color: #000;
+}
+
+.todo-filter label .multiselect__tags-wrap {
+  overflow: hidden;
+  display: block;
+  margin-top: 21px;
+}
+
+.todo-filter label .multiselect__tags-wrap .multiselect__input {
+  border: 0px !important;
+  background: transparent !important;
+}
+
+.todo-filter label .multiselect__tags-wrap .multiselect__tag-icon:hover {
+  background: transparent;
+  color: #1b3aaa !important;
+}
+
+.rounded-0 .multiselect__tags {
+  border-radius: 0px !important;
+}
+
+.todo-box .multiselect__tag {
+  background: transparent;
+  color: #000;
+  padding-top: 7px;
+}
+
+.todo-options .multiselect__input:focus {
+  border: 0px !important;
+}
+
+.todo-options .custom-control-label {
+  font-size: 14px;
+}
+
+.todo-options .priority {
+  padding: 15px;
+  border: 1px solid;
+}
+
+.todo-options .custom-control-input:checked ~ .priority {
+  color: blue;
+}
+
+.todo-options .todo-priorities label {
+  float: left;
+  padding: 12px 14px;
+  font-size: 10px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-radius: 11px !important;
+}
+
+.todo-options .todo-priority {
+  float: left;
+}
+
+.todo-options .custom-radio.b-custom-control-lg,
+.todo-options .input-group-lg .custom-radio {
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+}
+
+.todo-listing .collapsed-card [data-card-widget=collapse] .fas:before {
+  content: "\F106";
+}
+
+.todo-listing .collapsed-card [data-card-widget=collapse] .fas:before {
+  content: "\F107";
+}
+
+.todo-list .media-body:hover,
+.media-body:active {
+  background: #fff !important;
+}
+
+.todo-list .media-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.font-reguler {
+  font-weight: 100 !important;
+}
+
+.todo-list label {
+  font-size: 12px !important;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.dropdown-menu-lg p:focus {
+  color: #000;
+}
+
+.schedule .mx-datepicker-popup {
+  left: 20px !important;
+  top: 20px !important;
+}
+
+.schedule-picker input {
+  background: transparent;
+  color: transparent !important;
+  border: 0px;
+  opacity: 1;
+}
+
+.schedule-picker i {
+  font-size: 16px !important;
+  position: absolute;
+  z-index: 999;
+  left: unset;
+  padding-left: 12px;
+  padding-top: 2px;
+}
+
+.schedule-picker .fa-calendar-alt:before {
+  margin-top: 8px;
+  z-index: -1;
+  position: absolute;
+  margin-left: -19px;
+}
+
+.todo-nav li a.active {
+  font-family: font-bold;
+}
+
+.todo-nav li a {
+  font-size: 12px !important;
+}
+
+.med-line-height {
+  line-height: 1.5;
+}
+
 .c-pointer {
   cursor: pointer;
 }
@@ -31535,8 +31799,8 @@ body {
   cursor: pointer;
 }
 
-/*  Author: 
-Date: 
+/*  Author: Dino
+Date: 04-07-19
 Requirement: Select2 Text Field Style
 ========================================================================== */
 
@@ -31545,8 +31809,8 @@ Requirement: Select2 Text Field Style
   padding: 8px 4px;
 }
 
-/*  Author: 
-Date: 
+/*  Author: Dino
+Date: 30-07-19
 Requirement: text box, dropdown, date-picker font size common
 ========================================================================== */
 
@@ -31617,10 +31881,6 @@ button {
   height: 33%;
 }
 
-.profile-user-img {
-  height: 100px !important;
-}
-
 .video-edit-button {
   position: absolute;
   right: -18px;
@@ -31630,23 +31890,6 @@ button {
 
 .sidebar .custom-nav {
   width: 95% !important;
-}
-
-.mx-datepicker.is-invalid,
-.vue-dropzone.is-invalid,
-.dropdaown-select2.is-invalid {
-  border: 1px solid #e3342f;
-  border-radius: 0.25rem;
-}
-
-.mx-datepicker.is-invalid ~ .invalid-feedback,
-.vue-dropzone.is-invalid ~ .invalid-feedback,
-.dropdaown-select2.is-invalid ~ .invalid-feedback {
-  display: block;
-}
-
-#Scheduled .mx-datepicker {
-  position: unset !important;
 }
 
 /*====== todo styles ==========*/
@@ -32157,6 +32400,23 @@ textarea:focus {
   border-color: #66afe9;
   outline: 0;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
 }
 
 .av-datatable .card-header {

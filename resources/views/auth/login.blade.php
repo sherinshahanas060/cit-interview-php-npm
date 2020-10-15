@@ -71,6 +71,7 @@
                                 <strong id="geolocation_error"></strong>
                              </span>
                              </div>
+                           
                         </div>
                     </form>
                 </div>
@@ -83,10 +84,10 @@
 <script>
 //======= set the latitude and longitude into form field==============//
 $(document).ready(function(){
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     }
+    
 });
 function showPosition(position) {
     $("#location_latitude").val(position.coords.latitude);

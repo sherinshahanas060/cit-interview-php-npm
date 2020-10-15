@@ -10,7 +10,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Aizove</title>
+
+    <title>Aizove Admin</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script>
         base_url = "{{ url('/') }}";
@@ -21,6 +22,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @endauth
     </script>
     <!-- <script src="https://wchat.freshchat.com/js/widget.js"></script> -->
+
 </head>
 
 <body class="hold-transition sidebar-mini theme-success theme-bg layout-navbar-fixed">
@@ -66,13 +68,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <menu-count></menu-count>
                 <li class="nav-item dropdown user user-menu" title="User">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="/image/user1-128x128.jpg" class="user-image img-circle" alt="User Image">
+                    <img src="/file?name=profile/{{Auth::user()->userDetails->profile_image}}&disk=user_uploads" class="user-image img-circle" alt="User Image">
                         <i class="right fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
                         <li class="user-header bg-primary">
-                        <img src="/image/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="/file?name=profile/{{Auth::user()->userDetails->profile_image}}&disk=user_uploads" class="img-circle elevation-2" alt="User Image">
 
                             <p>
                                 {{Auth::user()->name}}
@@ -199,6 +201,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED SCRIPTS -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @javascript(['utilsConstants' => config('utils_constants')])
     @javascript(['user' => \Auth::user()->toArray()])
     @javascript(['roles' => \Auth::user()->roles])
     @javascript(['VisitorsAPI' => config('app.vistors_api')])
@@ -236,7 +239,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         'blogDestroy' : '{{ route('blogapi.destroy', ['blogapi'=>"0"]) }}',
         'blogShow' : '{{ route('blogapi.show', ['blogapi' => 0]) }}',
         'blogUpdate' : '{{ route('blogapi.update', ['blogapi'=>"0"]) }}',
-        'logreportIndex' : '{{ route('logreportapi.index') }}'
+        'logreportIndex' : '{{ route('logreportapi.index') }}',
+
+        'toDoStore' : '{{ route('todotaskapi.store') }}',
+        'toDoDestroy' : '{{ route('todotaskapi.destroy', ['todotaskapi' => 0]) }}',
+        'toDoIndex' : '{{ route('todotaskapi.index') }}',
+        'getuserCount' : '{{ route('todotaskapi.getuserCount') }}',
+        'TeamTodos' : '{{ route('todotaskapi.teamtaskIndex') }}',
+        'toDoView' : '{{ route('todotaskapi.view', ['id' => 0]) }}',
+        'toDoShow' : '{{ route('todotaskapi.show', ['todotaskapi' => 0]) }}',
+        'removeToDoUser' : '{{ route('todotaskapi.removetodouser', ['mapId' => 0]) }}',
+        'getStatus' : '{{ route('todotaskapi.getstatus') }}',
+        'addToDoStatus' : '{{ route('todotaskapi.addtodostatus',['status' => 0]) }}',
+        'toDoUpdate' : '{{ route('todotaskapi.update',['todotaskapi' => 0]) }}',
+        'toDoUpdateCompleted' : '{{ route('todotaskapi.updateToDoCompleted', ['status'=>"0"]) }}',
+        'forwardTodo' : '{{ route('todotaskapi.forwardtodo') }}',
+        'getTodoCompleted' : '{{ route('todotaskapi.todocompletedindex') }}',
+        'priorityIndex' : '{{ route('priorityapi.index') }}',
         }
     </script>
 

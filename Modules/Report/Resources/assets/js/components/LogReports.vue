@@ -163,8 +163,8 @@ export default {
   methods: {
     moreFilter() {},
     /*
-     * Author: DIno
-     * Date: 11-11-2019
+     * Author: 
+     * Date: 
      * Requirement: load logreports
      */
     loadLogReports(
@@ -188,8 +188,8 @@ export default {
         });
     },
     /*
-     * Author: Job
-     * Date: 16-08-19
+     * Author: 
+     * Date: 
      * Requirement: Datatable method
      */
     configpagination(data) {

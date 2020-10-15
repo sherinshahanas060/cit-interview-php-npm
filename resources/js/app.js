@@ -3,11 +3,17 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+window.Vue = require('vue');
+import moment from 'moment';
+import Vue from 'vue'
 
 require('./bootstrap');
+require('./adminltetheme');
+require('./general');
+
+require('../../Modules/Todo/Resources/assets/js/app');
 
 import { Form, HasError, AlertError } from 'vform'
-import moment from 'moment';
 
 import swal from 'sweetalert2'
 window.swal = swal;
@@ -24,9 +30,7 @@ window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
-window.Vue = require('vue');
 
-import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { routes } from './routes';
 
@@ -55,6 +59,10 @@ Vue.component('multiselect', Multiselect)
 // import "vue-tel-input/dist/vue-tel-input.css";
 import VueTelInput from 'vue-tel-input';
 Vue.use(VueTelInput)
+
+// import draggable
+import draggable from 'vuedraggable'
+Vue.use(draggable)
 
 //scroll horizontal when mouse drag
 import VueDragscroll from 'vue-dragscroll'

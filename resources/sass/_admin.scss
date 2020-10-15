@@ -111,8 +111,8 @@ body {
   cursor: pointer;
 }
 
-/*  Author: 
-Date: 
+/*  Author: Dino
+Date: 04-07-19
 Requirement: Select2 Text Field Style
 ========================================================================== */
 
@@ -120,8 +120,8 @@ Requirement: Select2 Text Field Style
   height: 35px !important;
   padding: 8px 4px;
 }
-/*  Author: 
-Date: 
+/*  Author: Dino
+Date: 30-07-19
 Requirement: text box, dropdown, date-picker font size common
 ========================================================================== */
 .form-control,
@@ -179,9 +179,6 @@ button {
   /* adjust 'height' to position overlay content vertically */
   height: 33%;
 }
-.profile-user-img {
-  height: 100px !important;
-}
 .video-edit-button {
   position: absolute;
   right: -18px;
@@ -190,18 +187,6 @@ button {
 }
 .sidebar .custom-nav {
   width: 95% !important;
-}
-
-.mx-datepicker.is-invalid,.vue-dropzone.is-invalid,.dropdaown-select2.is-invalid {
-  border:1px solid #e3342f;
-  border-radius: 0.25rem;
-}
-.mx-datepicker.is-invalid ~ .invalid-feedback,.vue-dropzone.is-invalid ~ .invalid-feedback,.dropdaown-select2.is-invalid ~ .invalid-feedback {
-  display: block;
-}
-
-#Scheduled .mx-datepicker {
-  position: unset !important;
 }
 
 /*====== todo styles ==========*/
@@ -653,19 +638,19 @@ textarea:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
-// textarea:hover,
-// input:hover,
-// textarea:active,
-// input:active,
-// textarea:focus,
-// input:focus,
-// button:focus,
-// button:active,
-// button:hover,
-// label:focus,
-// .btn:active,
-// .btn.active {
-//   outline: 0px !important;
-//   -webkit-appearance: none;
-//   box-shadow: none !important;
-// }
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+}

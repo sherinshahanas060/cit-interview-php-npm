@@ -22,6 +22,10 @@
         <i class="fas fa-cart-arrow-down"></i>
         <p>Developer</p>
     </a>
+    <a class="nav-link p-0 text-center" id="vert-tabs-todo-tab" data-toggle="pill" href="#vert-tabs-todo" role="tab" aria-controls="vert-tabs-todo" aria-selected="false">
+        <i class="fas fa-list-alt"></i></i>
+        <p>To Do</p>
+    </a>
 </div>
 </div>
  <div class="right-m-bar">

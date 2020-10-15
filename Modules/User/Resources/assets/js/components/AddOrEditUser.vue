@@ -14,7 +14,6 @@
                 alt
                 class="img-fluid"
               />
-
             </div>
             <form
               @submit.prevent="editMode > 0 ? updateUser() : createUser()"
@@ -72,7 +71,7 @@
                     v-model="form.join_date"
                     format="DD-MM-YYYY"
                     value-type="format"
-                     placeholder="Select Date"
+                    placeholder="Select Date"
                     lang="en"
                     class="w-100"
                     title="Join Date"
@@ -97,18 +96,16 @@
                 <div class="form-group col-sm-6">
                   <label for="exampleInputFile">Title</label>
                   <Select2
-                                        v-model="form.title"
-                                        name="title"
-                                        :options="titleOptions"
-                                        id="title"
-                                        title="Tilte"
-                                        class="dropdaown-select2"
-                                        :class="{
-                                            'is-invalid': form.errors.has(
-                                                'title'
-                                            )
-                                        }"
-                                    ></Select2>
+                    v-model="form.title"
+                    name="title"
+                    :options="titleOptions"
+                    id="title"
+                    title="Tilte"
+                    class="dropdaown-select2"
+                    :class="{
+                      'is-invalid': form.errors.has('title')
+                    }"
+                  ></Select2>
                   <has-error :form="form" field="title"></has-error>
                 </div>
                 <div class="form-group col-sm-6">
@@ -142,12 +139,12 @@
                   <has-error :form="form" field="middle_name"></has-error>
                 </div>
                 <div class="form-group col-sm-6">
-                  <label for="exampleInputFile">Second Name</label>
+                  <label for="exampleInputFile">Last Name</label>
                   <input
                     v-model="form.second_name"
                     type="text"
                     name="second_name"
-                    placeholder="Enter Second Name"
+                    placeholder="Enter Last Name"
                     class="form-control"
                     id="second-name"
                     title="Second Name"
@@ -191,6 +188,7 @@
                     name="mobile_number"
                     placeholder="Enter Mobile Number"
                     class="form-control"
+                    v-bind="bindProps"
                     :valid-characters-only="true"
                     id="mobile-number"
                     title="Mobile Number"
@@ -291,13 +289,16 @@
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
 import DatePicker from "vue2-datepicker";
-import 'vue2-datepicker/index.css';
+import "vue2-datepicker/index.css";
 export default {
   components: { vueDropzone: vue2Dropzone, datePicker: DatePicker },
   data() {
     return {
       editMode: false,
       user: user,
+      bindProps: {
+        mode: "international"
+      },
       form: new Form({
         id: "",
         user_id: "",
@@ -319,15 +320,15 @@ export default {
         profile_image: ""
       }),
       titleOptions: [
-                { id: 0, text: "Select Title" },
-                { id: "Dr", text: "Dr" },
-                { id: "Prof", text: "Prof" },
-                { id: "Mr", text: "Mr" },
-                { id: "Miss", text: "Miss" },
-                { id: "Mrs", text: "Mrs" },
-                { id: "Ms", text: "Ms" },
-                { id: "Master", text: "Master" }
-            ],
+        { id: 0, text: "Select Title" },
+        { id: "Dr", text: "Dr" },
+        { id: "Prof", text: "Prof" },
+        { id: "Mr", text: "Mr" },
+        { id: "Miss", text: "Miss" },
+        { id: "Mrs", text: "Mrs" },
+        { id: "Ms", text: "Ms" },
+        { id: "Master", text: "Master" }
+      ],
       dropOptions: {
         url: window.routes.fileUpload,
         acceptedFiles: ".jpg,.png,.gif,.jpeg",
@@ -356,8 +357,7 @@ export default {
         { id: "Design", text: "Design" },
         { id: "Production", text: "Production" }
       ],
-      roleOptions: [],
-      
+      roleOptions: []
     };
   },
   methods: {
@@ -369,7 +369,7 @@ export default {
     },
     /*
      * Author: Iqbal
-     * Date: 
+     * Date:
      * Requirement: load Role options
      */
     createUser() {
@@ -404,7 +404,7 @@ export default {
     },
     /*
      * Author: Iqbal
-     * Date: 
+     * Date:
      * Requirement: load Role options
      */
     updateUser() {
@@ -433,7 +433,7 @@ export default {
     },
     /*
      * Author: Iqbal
-     * Date: 
+     * Date:
      * Requirement: load Role options
      */
     loadRoleOption() {
@@ -453,7 +453,7 @@ export default {
     },
     /*
      * Author: Iqbal
-     * Date: 
+     * Date:
      * Requirement: load User details
      */
     loadUser(user_id) {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EmailErrorMail;
 use App\Models\AuthLog;
 use App\Models\Otp;
 use App\Models\User;
@@ -11,6 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use \Validator;
 
 class LoginController extends Controller
 {
@@ -42,16 +45,25 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'latitude' => 'required',
             'longitude' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            $message = "https://dv.aizove.com/ is trying to access your device location. Location error !";
+            if ($request->email) {
+                Mail::to($request->email)->send(new EmailErrorMail($message));
+            }
+        }
 
         $attempt = 1;
 
         // return $request->only($this->username(), 'password');
         $ip = $this->getUserIpAddr();
+
         $location_result = $this->validation("https://maps.googleapis.com/maps/api/geocode/json?latlng=$request->latitude,$request->longitude&key=AIzaSyCbfMjco6LRNimffgKp7E06Qax7MQ_VONg");
+
         $timestamp = time();
         $time_stamp = $this->validation("https://maps.googleapis.com/maps/api/timezone/json?location=$request->latitude,$request->longitude&timestamp=$timestamp&key=AIzaSyBvx4Wz0BNEZ7xyY8lUlCJwOfyzxC6aukk");
         if (!$request->session()->has('auth_logID')) {
@@ -108,13 +120,19 @@ class LoginController extends Controller
         if ($user->mobile_validated == 0) {
             $sendOtp = true;
         }
-        ## compare last 2 login devices
-        if ($logs && $logs->count() > 1) {
-            $vals = array_column(json_decode($logs), 'device_information');
-            if ($vals[0] != $vals[1]) {
-                $sendOtp = true;
-            }
+        ## check mobile number validated status
+        if ($user->email_validated == 0) {
+            $sendOtp = true;
         }
+
+        $sendOtp = true;
+        // ## compare last 2 login devices
+        // if ($logs && $logs->count() > 1) {
+        //     $vals = array_column(json_decode($logs), 'device_information');
+        //     if ($vals[0] != $vals[1]) {
+        //         $sendOtp = true;
+        //     }
+        // }
 
         ## send verification otp if required
         if ($sendOtp) {

@@ -23,9 +23,13 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::get('file', [App\Http\Controllers\AuthfileController::class,'getFile'])->name('file');
 
+Route::get('api/v1/file', [App\Http\Controllers\ApiFileController::class, 'getFile'])->name('api-file');
+
 Route::get('/otp', [App\Http\Controllers\Auth\userController::class,'otp'])->name('otp');
 Route::get('/resendotp', [App\Http\Controllers\Auth\userController::class,'resendotp'])->name('resendotp');
+Route::get('/resendmailotp', [App\Http\Controllers\Auth\userController::class,'resendmailotp'])->name('resendmailotp');
 Route::post('/verifyotp', [App\Http\Controllers\Auth\userController::class,'verifyOtp'])->name('verifyotp');
+Route::post('/verifymailotp', [App\Http\Controllers\Auth\userController::class,'verifymailotp'])->name('verifymailotp');
 Route::get('/mailotp', [App\Http\Controllers\Auth\userController::class,'mailotp'])->name('mailotp');
 
 

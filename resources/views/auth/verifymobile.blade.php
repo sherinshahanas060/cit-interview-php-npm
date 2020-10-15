@@ -37,7 +37,7 @@
                         </div>
                     </form>
                     <!-- <a class="float-right" href="{{ url('/resendotp') }}">Resend OTP</a> -->
-                    <a class="float-right" href="{{ url('/mailotp') }}">Resend OTP to email</a>
+                    <a class="float-right" href="{{ url('/resendotp') }}">Resend OTP</a>
                 </div>
             </div>
         </div>

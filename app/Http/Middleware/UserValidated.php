@@ -18,7 +18,7 @@ class UserValidated
     public function handle(Request $request, Closure $next)
     {
 
-        if ($request->user()->mobile_validated == 0) {
+        if ($request->user()->mobile_validated == 0 || $request->user()->email_validated == 0) {
             if (Auth::check()) {
                 Auth::logout();
             }

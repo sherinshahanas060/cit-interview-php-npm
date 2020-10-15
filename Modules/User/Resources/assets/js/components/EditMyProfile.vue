@@ -123,12 +123,12 @@
                   <has-error :form="form" field="middle_name"></has-error>
                 </div>
                 <div class="form-group col-sm-6">
-                  <label for="exampleInputFile">Second Name</label>
+                  <label for="exampleInputFile">Last Name</label>
                   <input
                     v-model="form.second_name"
                     type="text"
                     name="second_name"
-                    placeholder="Enter Second Name"
+                    placeholder="Enter Last Name"
                     class="form-control"
                     id="second-name"
                     title="Second Name"
@@ -169,6 +169,7 @@
                     v-model="form.mobile_number"
                     type="text"
                     name="mobile_number"
+                    v-bind="bindProps"
                     placeholder="Enter Mobile Number"
                     class="form-control"
                     :valid-characters-only="true"
@@ -266,6 +267,9 @@ export default {
     return {
       editMode: false,
       user: user,
+      bindProps: {
+        mode: "international"
+      },
       form: new Form({
         id: "",
         user_id: "",
@@ -349,14 +353,12 @@ export default {
         .then(response => {
           this.isLoading = false;
           if (response.data.status == 100) {
-            
             toast.fire({
               type: "success",
               title: "My Profile updated successfully"
             });
             this.$Progress.finish();
             fire.$emit("afterActionUpdate");
-            
           }
           this.$mouse_enable();
         })
@@ -429,7 +431,7 @@ export default {
     });
 
     fire.$on("afterActionUpdate", () => {
-      this.$router.push({ name: "AdminDashboard" });
+      this.$router.push({ name: "dashboard" });
     });
   }
 };
