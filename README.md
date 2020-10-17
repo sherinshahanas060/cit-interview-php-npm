@@ -24,6 +24,10 @@ Step 10: npm run prod
 
 Step 11: php artisan serve
 
-Backendframework :https://laravel.com/
+Backend framework :https://laravel.com/
+
 Front-end : https://vuejs.org/
 
+Module Doc :https://nwidart.com/laravel-modules/v6/introduction
+
+DB Serve: ssh -i /home/ubuntu/key.pem ec2-user@10.0.1.10
