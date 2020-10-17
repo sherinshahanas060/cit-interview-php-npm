@@ -1,6 +1,6 @@
 PHP Version Required : 7.3
-
 Node
+composer
 
 Step 1: git clone -b master url
 
