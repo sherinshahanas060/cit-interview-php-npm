@@ -28,16 +28,12 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
-        // if($event->user->mobile_validated == 0) {
-        //     return redirect()->back()->with('success', ['your message,here']); 
-        // }
         $auth_logID = session('auth_logID');
         if($auth_logID != null){
             AuthLog::where('id', $auth_logID)
             ->update(array('user_id' => $event->user->id, 'failure_reason' => 'Success'));
+            
         }  
-        
-        // AuthLog::get('user')
         
     }
     

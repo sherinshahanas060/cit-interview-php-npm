@@ -81,11 +81,11 @@
                   <td>{{ reports.address }}</td>
                   <td>
                     {{
-                      reports.lat
+                      (reports.lat
                         ? reports.lat
-                        : "" + "," + reports.lon
+                        : "") + ", " + (reports.lon
                         ? reports.lon
-                        : ""
+                        : "")
                     }}
                   </td>
                   <td>{{ reports.time_zone }}</td>

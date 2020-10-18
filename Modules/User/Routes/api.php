@@ -18,14 +18,15 @@
 Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResources([
         'rolepermissionapi' => 'API\RolePermissionController',
-        'usermanageapi' => 'API\UserManageController'
+        'usermanageapi' => 'API\UserManageController',
+        'webuserapi' => 'API\WebUserController'
     ]);
-    Route::post('storeRole','API\RolePermissionController@storeRole')->name('rolepermissionapi.storerole');
-    Route::put('updateRole/{id}','API\RolePermissionController@updateRole')->name('rolepermissionapi.updaterole');
-    Route::delete('destroyRole/{id}','API\RolePermissionController@destroyRole')->name('rolepermissionapi.destroyrole');
-    Route::post('syncPermissionToRole','API\RolePermissionController@syncPermissionToRole')->name('rolepermissionapi.syncpermissiontorole');
-    Route::get('getUserPermissions','API\RolePermissionController@getUserPermissions')->name('rolepermissionapi.userpermissions');
-    Route::get('getAllRoles','API\RolePermissionController@getAllRoles')->name('rolepermissionapi.getallroles');
+    Route::post('storeRole', 'API\RolePermissionController@storeRole')->name('rolepermissionapi.storerole');
+    Route::put('updateRole/{id}', 'API\RolePermissionController@updateRole')->name('rolepermissionapi.updaterole');
+    Route::delete('destroyRole/{id}', 'API\RolePermissionController@destroyRole')->name('rolepermissionapi.destroyrole');
+    Route::post('syncPermissionToRole', 'API\RolePermissionController@syncPermissionToRole')->name('rolepermissionapi.syncpermissiontorole');
+    Route::get('getUserPermissions', 'API\RolePermissionController@getUserPermissions')->name('rolepermissionapi.userpermissions');
+    Route::get('getAllRoles', 'API\RolePermissionController@getAllRoles')->name('rolepermissionapi.getallroles');
 
     Route::get('showUserDetailsByUserId/{userId}/', 'API\UserManageController@showUserDetailsByUserId')->name('usermanageapi.showuserdetailsbyuserid');
     Route::get('getUsers/', 'API\UserManageController@getUsers')->name('usermanageapi.getusers');

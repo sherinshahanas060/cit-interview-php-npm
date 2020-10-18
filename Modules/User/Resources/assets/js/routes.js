@@ -5,4 +5,5 @@ export const userModuleRoutes = [
     { path: '/user/viewuser/:id', component: require('./components/ViewUser.vue').default, name: 'viewUser', meta: { title: 'View User' } },
     { path: '/user/myprofile/:id', component: require('./components/MyProfile.vue').default, name: 'myProfile', meta: { title: 'My Profile' } },
     { path: '/user/editmyprofile/:id', component: require('./components/EditMyProfile.vue').default, name: 'editMyProfile', meta: { title: 'Edit My Profile' } },
+    { path: '/user/webusers', component: require('./components/web/Users.vue').default, name: 'webUsers', meta: { title: 'Users' } },
 ];

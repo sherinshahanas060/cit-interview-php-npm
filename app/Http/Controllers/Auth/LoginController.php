@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Mail\EmailErrorMail;
 use App\Models\AuthLog;
 use App\Models\Otp;
 use App\Models\User;
@@ -12,8 +11,6 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use \Validator;
 
 class LoginController extends Controller
 {
@@ -45,27 +42,33 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'latitude' => 'required',
-            'longitude' => 'required',
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'latitude' => 'required',
+        //     'longitude' => 'required',
+        // ]);
 
-        if ($validator->fails()) {
-            $message = "https://dv.aizove.com/ is trying to access your device location. Location error !";
-            if ($request->email) {
-                Mail::to($request->email)->send(new EmailErrorMail($message));
-            }
-        }
+        // if ($validator->fails()) {
+        //     $message = "https://dv.aizove.com/ is trying to access your device location. Location error !";
+        //     if ($request->email) {
+        //         Mail::to($request->email)->send(new EmailErrorMail($message));
+        //     }
+        // }
 
-        $attempt = 1;
+        $attempt = 0;
 
         // return $request->only($this->username(), 'password');
-        $ip = $this->getUserIpAddr();
+        // $ip = $this->getUserIpAddr();
 
-        $location_result = $this->validation("https://maps.googleapis.com/maps/api/geocode/json?latlng=$request->latitude,$request->longitude&key=AIzaSyCbfMjco6LRNimffgKp7E06Qax7MQ_VONg");
+        // $location_result = $this->validation("https://maps.googleapis.com/maps/api/geocode/json?latlng=$request->latitude,$request->longitude&key=AIzaSyCbfMjco6LRNimffgKp7E06Qax7MQ_VONg");
+        $ip_apiresult = $this->validationIP_API("http://ip-api.com/json/$request->ipaddress?fields=country,lat,lon,timezone");
+        
+        $latitude = $ip_apiresult['lat'];
+        $longitude = $ip_apiresult['lon'];
+        $location_result = $this->validationIP_API("https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=AIzaSyCbfMjco6LRNimffgKp7E06Qax7MQ_VONg");
 
-        $timestamp = time();
-        $time_stamp = $this->validation("https://maps.googleapis.com/maps/api/timezone/json?location=$request->latitude,$request->longitude&timestamp=$timestamp&key=AIzaSyBvx4Wz0BNEZ7xyY8lUlCJwOfyzxC6aukk");
+        if ($location_result != "false") {
+            $address = $location_result['results'][0]["formatted_address"];
+        }
         if (!$request->session()->has('auth_logID')) {
             $attempt = 1;
         } else {
@@ -84,17 +87,15 @@ class LoginController extends Controller
         | Save login location and device information to database
         |--------------------------------------------------------------------------
          */
-        if ($location_result != "false" && $time_stamp != "false") {
-            $address = json_decode($location_result);
-            $time_zone = json_decode($time_stamp);
+        if ($location_result != "false") {
             $auth_logID = AuthLog::create([
                 // 'user_id' => "",
-                'login_ip' => $ip,
+                'login_ip' => $request->ipaddress,
                 // 'mac_id' => "",
-                'address' => $address->results[0]->formatted_address,
-                'lat' => $request->latitude,
-                'lon' => $request->longitude,
-                'time_zone' => $time_zone->timeZoneId,
+                'address' => $address,
+                'lat' => $latitude,
+                'lon' => $longitude,
+                'time_zone' => $ip_apiresult['timezone'],
                 // 'login_time' => Carbon::now(),
                 // 'logout_time' => "",
                 'device_information' => $request->header('User-Agent'),
@@ -109,37 +110,55 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $sendOtp = false;
-        $logs = AuthLog::select('id', 'device_information')
-            ->where('user_id', $user->id)
-            ->where('failure_reason', 'Success')
-            ->latest()
-            ->take(2)
-            ->get();
+        if (\Config::get('app.env') !== 'local') {
+            // $logs = AuthLog::select('id', 'device_information')
+            //     ->where('user_id', $user->id)
+            //     ->where('failure_reason', 'Success')
+            //     ->latest()
+            //     ->take(2)
+            //     ->get();
 
-        ## check mobile number validated status
-        if ($user->mobile_validated == 0) {
+            ## check mobile number validated status
+            if ($user->mobile_validated == 0) {
+                $sendOtp = true;
+            }
+            ## check mobile number validated status
+            if ($user->email_validated == 0) {
+                $sendOtp = true;
+            }
+
             $sendOtp = true;
+            // ## compare last 2 login devices
+            // if ($logs && $logs->count() > 1) {
+            //     $vals = array_column(json_decode($logs), 'device_information');
+            //     if ($vals[0] != $vals[1]) {
+            //         $sendOtp = true;
+            //     }
+            // }
+            ## send verification otp if required
+            if ($sendOtp) {
+                Otp::where('user_id', $user->id)->update(['status' => 0]);
+                $user->update(['mobile_validated' => 0, 'email_validated' => 0]);
+                return redirect('/otp');
+            }
         }
-        ## check mobile number validated status
-        if ($user->email_validated == 0) {
-            $sendOtp = true;
-        }
+    }
 
-        $sendOtp = true;
-        // ## compare last 2 login devices
-        // if ($logs && $logs->count() > 1) {
-        //     $vals = array_column(json_decode($logs), 'device_information');
-        //     if ($vals[0] != $vals[1]) {
-        //         $sendOtp = true;
-        //     }
-        // }
-
-        ## send verification otp if required
-        if ($sendOtp) {
-            Otp::where('user_id', $user->id)->update(['status' => 0]);
-            $user->update(['mobile_validated' => 0, 'email_validated' => 0]);
-            return redirect('/otp');
+    /**
+     * api validation
+     * @return Response
+     */
+    public function validationIP_API($request)
+    {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', $request);
+        $status_code = $response->getStatusCode();
+        $value = $response->getBody();
+        $data = json_decode($value, true);
+        if ($status_code != 200) {
+            $data = "false";
         }
+        return $data;
     }
 
     public function validation($request)

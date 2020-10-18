@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="col-12">
           <div class="card-body row p-0">
-            <div class="col-md-6 p-0">
+            <div class="col-md-6 ">
               <Card class="card h-100">
                 <div class="card-header">
                   <h3 class="card-title">Device Usage</h3>
@@ -38,7 +38,7 @@
                 <!-- /.card-body -->
               </Card>
             </div>
-            <div class="col-md-6 p-0">
+            <div class="col-md-6 ">
               <Card class="card h-100">
                 <div class>
                   <div class="card-header">

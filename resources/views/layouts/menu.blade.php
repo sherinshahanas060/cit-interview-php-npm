@@ -6,12 +6,12 @@
             <p>Home</p>
         </router-link>
     </a>
-    
+
     <a class="nav-link p-0 text-center" id="vert-tabs-settings-tab" data-toggle="pill" href="#vert-tabs-settings" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">
         <i class="fas fa-cart-arrow-down"></i>
         <p>User</p>
     </a>
-    
+
     @can('Cms')
     <a class="nav-link p-0 text-center" id="vert-tabs-blog-tab" data-toggle="pill" href="#vert-tabs-blogs" role="tab" aria-controls="vert-tabs-blogs" aria-selected="false">
         <i class="fas fa-cart-arrow-down"></i>
@@ -22,10 +22,7 @@
         <i class="fas fa-cart-arrow-down"></i>
         <p>Developer</p>
     </a>
-    <a class="nav-link p-0 text-center" id="vert-tabs-todo-tab" data-toggle="pill" href="#vert-tabs-todo" role="tab" aria-controls="vert-tabs-todo" aria-selected="false">
-        <i class="fas fa-list-alt"></i></i>
-        <p>To Do</p>
-    </a>
+    
 </div>
 </div>
  <div class="right-m-bar">
@@ -42,7 +39,7 @@
                     <input type="text" class="menufilter" placeholder="Search for menu..">
 
                     <ul class="nav custom-nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        
+
                         <li class="nav-item">
                             <router-link :to="{name : 'dashboard'}" class="nav-link">
                                 <i class="fas fa-circle-notch nav-icon"></i>
@@ -51,8 +48,8 @@
                                 </p>
                             </router-link>
                         </li>
-                       
-                        
+
+
                     </ul>
 
                 </nav>
@@ -68,8 +65,8 @@
                     <input type="text" class="menufilter" placeholder="Search for menu..">
 
                     <ul class="nav custom-nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        
-                       
+
+
                         <li class="nav-item">
                             <router-link :to="{name : 'developer'}" class="nav-link">
                                 <i class="fas fa-circle-notch nav-icon"></i>
@@ -78,7 +75,7 @@
                                 </p>
                             </router-link>
                         </li>
-                        
+
                     </ul>
 
                 </nav>
@@ -94,7 +91,7 @@
                     <input type="text" class="menufilter" placeholder="Search for menu..">
 
                     <ul class="nav custom-nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        
+
                     @can('Role')
                         <li class="nav-item">
                             <router-link :to="{name : 'permissions'}" class="nav-link">
@@ -115,13 +112,23 @@
                             </router-link>
                         </li>
                         @endcan
+                        @can('User')
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'webUsers'}" class="nav-link">
+                                <i class="nav-icon fas fa-user-tie"></i>
+                                <p>
+                                    Web Users
+                                </p>
+                            </router-link>
+                        </li>
+                        @endcan
                         <li class="nav-item">
                             <router-link :to="{ name : 'logreports' }" class="nav-link">
                                 <i class="fas fa-circle-notch nav-icon"></i>
                                 <p>Log Report</p>
                             </router-link>
                         </li>
-                        
+
                     </ul>
 
                 </nav>
@@ -136,8 +143,8 @@
                     <input type="text" class="menufilter" placeholder="Search for menu..">
 
                     <ul class="nav custom-nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        
-                       
+
+
                         <li class="nav-item">
                             <router-link :to="{name : 'blogs'}" class="nav-link">
                                 <i class="fas fa-circle-notch nav-icon"></i>
@@ -146,13 +153,13 @@
                                 </p>
                             </router-link>
                         </li>
-                       
+
                     </ul>
 
                 </nav>
             </div>
         </div>
         <!--end menu Blog-->
-        
+
     </div>
 </div>

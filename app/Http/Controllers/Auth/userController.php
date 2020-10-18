@@ -137,6 +137,18 @@ class userController extends Controller
         }
     }
 
+    public function getAttemptCount($id)
+    {
+        return true;
+        // $attempt = AuthLog::where('user_id', $id)
+        // ->latest()
+        // ->first();
+
+        // if($attempt->attempt_count > 3) {
+
+        // }
+    }
+
     /**
      * Verify otp entered by logind user.
      *
@@ -154,30 +166,37 @@ class userController extends Controller
                     ->withInput();
             }
 
-            $date = new \DateTime('NOW');
-            $date->modify('-1 minutes');
-            $formatted_date = $date->format('Y-m-d H:i:s');
+            if ($this->getAttemptCount($request->user()->id)) {
+                $date = new \DateTime('NOW');
+                $date->modify('-1 minutes');
+                $formatted_date = $date->format('Y-m-d H:i:s');
 
-            $otp = Otp::where('otp', $request->otp)
-                ->where('status', 1)
-                ->where('type', 1)
-                ->where('created_at', '>=', $formatted_date)
-                ->where('verified', 0)->first();
+                $otp = Otp::where('otp', $request->otp)
+                    ->where('status', 1)
+                    ->where('type', 1)
+                    ->where('created_at', '>=', $formatted_date)
+                    ->where('verified', 0)->first();
 
-            if ($otp) {
-                $otp->update(['verified' => 1, 'status' => 0]);
+                if ($otp) {
+                    $otp->update(['verified' => 1, 'status' => 0]);
 
-                User::where('id', Auth::user()->id)
-                    ->update(['mobile_validated' => 1]);
+                    User::where('id', Auth::user()->id)
+                        ->update(['mobile_validated' => 1]);
 
-                return redirect('/mailotp');
+                    return redirect('/mailotp');
+                }
+
+                $validator->errors()->add('otp', 'Invalid OTP');
+
+                return redirect('otp')
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                $validator->errors()->add('email', 'User blocked !');
+                return redirect('/login')
+                    ->withErrors($validator)
+                    ->withInput();
             }
-
-            $validator->errors()->add('otp', 'Invalid OTP');
-
-            return redirect('otp')
-                ->withErrors($validator)
-                ->withInput();
 
         } catch (Exception $e) {
             return $e->getMessage();
@@ -254,7 +273,7 @@ class userController extends Controller
                 Mail::to(Auth::user()->email)->send(new EmailOtpMail($otp));
 
             }
-           
+
             return view('auth.verifyemail')->with('message', $this->otpLabel(null, Auth::user()->email));
         } catch (Exception $e) {
             return $e->getMessage();

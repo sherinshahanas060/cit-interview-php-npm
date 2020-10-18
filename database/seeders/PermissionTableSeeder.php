@@ -51,6 +51,11 @@ class PermissionTableSeeder extends Seeder
                 'module_list_id' => 2,
             ],
             [
+                'name' => 'webuser-list',
+                'guard_name' => 'api',
+                'module_list_id' => 2,
+            ],
+            [
                 'name' => 'user-create',
                 'guard_name' => 'api',
                 'module_list_id' => 2,

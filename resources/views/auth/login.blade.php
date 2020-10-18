@@ -51,8 +51,9 @@
                             </div>
                         </div>
                         <!-- latitude and longitude values -->
-                        <input type="hidden" name="latitude" id="location_latitude">
-                        <input type="hidden" name="longitude" id="location_longitude">
+                        <input type="hidden" name="ipaddress" id="ipaddress">
+                        <!-- <input type="hidden" name="latitude" id="location_latitude">
+                        <input type="hidden" name="longitude" id="location_longitude"> -->
                         <!-- ---------------------------------- -->
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -71,7 +72,7 @@
                                 <strong id="geolocation_error"></strong>
                              </span>
                              </div>
-                           
+
                         </div>
                     </form>
                 </div>
@@ -83,32 +84,54 @@
 <script src="{{ asset('jquery/jquery.js') }}"></script>
 <script>
 //======= set the latitude and longitude into form field==============//
-$(document).ready(function(){
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-    }
-    
-});
-function showPosition(position) {
-    $("#location_latitude").val(position.coords.latitude);
-    $("#location_longitude").val(position.coords.longitude);
-}
-function showError(error) {
-    $(".login_submit").attr('disabled',true);
-    var x = document.getElementById("geolocation_error");
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      x.innerHTML = "User denied the request for Geolocation. Please allow the browser location permission."
-      break;
-    case error.POSITION_UNAVAILABLE:
-      x.innerHTML = "Location information is unavailable."
-      break;
-    case error.TIMEOUT:
-      x.innerHTML = "The request to get user location timed out."
-      break;
-    case error.UNKNOWN_ERROR:
-      x.innerHTML = "An unknown error occurred."
-      break;
-  }
-}
+
+$(document).ready(function () {
+    $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+        function (json) {
+        $("#ipaddress").val(json.ip);
+        }
+    );
+
+      var device = "";
+      if (navigator.userAgent.match(/iPad/i)) {
+        device = "Tablet";
+      } else if (navigator.userAgent.match(/Android|webOS|iPhone|iPod|Blackberry/i)) {
+        device = "Mobile";
+      } else {
+        device = "Desktop";
+      }
+
+    });
+
+
+
+
+// $(document).ready(function(){
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition, showError);
+//     }
+
+// });
+// function showPosition(position) {
+//     $("#location_latitude").val(position.coords.latitude);
+//     $("#location_longitude").val(position.coords.longitude);
+// }
+// function showError(error) {
+//     $(".login_submit").attr('disabled',true);
+//     var x = document.getElementById("geolocation_error");
+//   switch(error.code) {
+//     case error.PERMISSION_DENIED:
+//       x.innerHTML = "User denied the request for Geolocation. Please allow the browser location permission."
+//       break;
+//     case error.POSITION_UNAVAILABLE:
+//       x.innerHTML = "Location information is unavailable."
+//       break;
+//     case error.TIMEOUT:
+//       x.innerHTML = "The request to get user location timed out."
+//       break;
+//     case error.UNKNOWN_ERROR:
+//       x.innerHTML = "An unknown error occurred."
+//       break;
+//   }
+// }
 </script>

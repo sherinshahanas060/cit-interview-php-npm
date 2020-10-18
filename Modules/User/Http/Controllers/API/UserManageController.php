@@ -23,6 +23,7 @@ class UserManageController extends Controller
         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
         $this->middleware('permission:user-view', ['only' => ['showUserDetailsByUserId', 'show']]);
     }
+   
     /**
      * @author
      * @date

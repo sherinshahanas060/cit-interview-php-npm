@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline w-100 ml-auto" title="Search">
+            <!-- <form class="form-inline w-100 ml-auto" title="Search">
                 <div class="input-group col-10 p-0 input-group-sm">
                     <input class="form-control bg-white form-control-navbar" type="search" placeholder="Type in to search ..." aria-label="Search">
                     <div class="input-group-append">
@@ -60,10 +60,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
 
             <!-- Right navbar links -->
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
 
                 <menu-count></menu-count>
                 <li class="nav-item dropdown user user-menu" title="User">
@@ -256,6 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         'forwardTodo' : '{{ route('todotaskapi.forwardtodo') }}',
         'getTodoCompleted' : '{{ route('todotaskapi.todocompletedindex') }}',
         'priorityIndex' : '{{ route('priorityapi.index') }}',
+        'webUserIndex' : '{{ route('webuserapi.index') }}',
         }
     </script>
 
