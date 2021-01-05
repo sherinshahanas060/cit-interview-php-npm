@@ -29,7 +29,7 @@
     <div class="tab-content" id="vert-tabs-tabContent">
         <!--start menu Home-->
         <div class="col-12">
-            <span class="brand-text font-weight-light">Aizove</span>
+            <span class="brand-text font-weight-light">Citrus Consulting</span>
         </div>
         <div class="col-12">DIRECTORIES</div>
         <div class="tab-pane fade active show" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab">

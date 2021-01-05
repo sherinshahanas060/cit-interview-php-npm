@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Aizove Admin</title>
+    <title>Citrus Consulting Admin</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script>
         base_url = "{{ url('/') }}";
@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <router-link to="/admin/dashboard" class="brand-link col-12 p-0 position-relative main-sidebar-brand p-0 text-center">
                                             <div class="both-center col-12 p-0">
                                                 <div class="col-12">
-                                                    <img src="/image/logo.jpg" alt="Aizove" class="aizov-eap-logo p-0 m-0" style="opacity: .8">
+                                                    <img src="/image/citrus-logo-orignal.png" alt="Citrus" class="aizov-eap-logo p-0 m-0" style="opacity: .8">
                                                     <!-- <img src="/file?name=logo/icon/{{ config('company_profile.profile.company_logo_icon') }}&disk=company_profile_uploads" alt="Aizov" class="aizov-eap-logo p-0 m-0" style="opacity: .8"> -->
                                                 </div>
                                             </div>
