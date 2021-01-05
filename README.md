@@ -1,12 +1,20 @@
 Project Requirements:
-    PHP Version Required : 7.3 
-    Node Version : 14
-    Nodejs Version : 10
-    Apache2
-    Node Composer
-    Mysql
-    Backendframework :https://laravel.com/ 
-    Front-end : https://vuejs.org/
+
+PHP Version Required : 7.3 
+
+Node Version : 14
+
+Nodejs Version : 10
+
+Apache2
+
+Node Composer
+
+Mysql
+
+Backendframework :https://laravel.com/ 
+
+Front-end : https://vuejs.org/
 
 
 
